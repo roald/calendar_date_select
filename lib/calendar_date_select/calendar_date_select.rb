@@ -26,6 +26,11 @@ module CalendarDateSelect
       :time => " %H:%M",
       :javascript_include => "format_danish"
     },
+    :dutch => {
+      :date => "%d-%m-%Y",
+      :time => " %H:%M",
+      :javascript_include => "format_dutch"
+    },
     :american => {
       :date => "%m/%d/%Y",
       :time => " %I:%M %p",
@@ -78,7 +83,7 @@ module CalendarDateSelect
   #   puts CalendarDateSelect.format[:date]
   #     => "%d/%m/%Y"
   def self.format
-    @calendar_date_select_format ||= FORMATS[:natural]
+    @calendar_date_select_format ||= FORMATS[:dutch]
   end
 
   # Set the format.  To see a list of available formats, CalendarDateSelect::FORMATS.keys, or open lib/calendar_date_select/calendar_date_select.rb
