@@ -205,11 +205,12 @@ CalendarDateSelect.prototype = {
     if (this.options.get("time"))
     {
       var blank_time = $A(this.options.get("time")=="mixed" ? [[" - ", ""]] : []);
-      buttons_div.build("span", {innerHTML:"@", className: "at_sign"});
+      //buttons_div.build("span", {innerHTML:"@", className: "at_sign"});
       
       var t = new Date();
       this.hour_select = new SelectBox(buttons_div,
-        blank_time.concat($R(0,23).map(function(x) {t.setHours(x); return $A([t.getAMPMHour()+ " " + t.getAMPM(),x])} )),
+        //blank_time.concat($R(0,23).map(function(x) {t.setHours(x); return $A([t.getAMPMHour()+ " " + t.getAMPM(),x])} )),
+        blank_time.concat($R(0,23).map(function(x) {t.setHours(x); return $A([t.getHours(),x])} )),
         { 
           calendar_date_select: this, 
           onchange: function() { this.calendar_date_select.updateSelectedDate( { hour: this.value });},
@@ -226,6 +227,7 @@ CalendarDateSelect.prototype = {
           className: "minute" 
         }
       );
+      buttons_div.build("br");
       
     } else if (! this.options.get("buttons")) buttons_div.remove();
     
